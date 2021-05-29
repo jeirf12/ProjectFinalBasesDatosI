@@ -1,0 +1,16 @@
+insert into Camara_Comercio values('1','cauca');
+insert into Camara_Comercio values('2','valle del cauca');
+insert into Camara_Comercio values('3','antioquia');
+insert into Camara_Comercio values('4','nariño');
+insert into empresa_domiciliaria values('10','1','caficauca','15/03/2019');
+insert into empresa_domiciliaria values('11','3','domicilios.com','04/12/2012');
+insert into empresa_domiciliaria values('12','3','rappi','28/09/2015');
+insert into empresa_domiciliaria values('13','2','ingDomicilios','23/03/2020');
+insert into Domiciliario values(100,'pablo','roa','menor de 5 años','activo');
+insert into Domiciliario values(101,'jhonfer','ruiz','de 11 a 20 años','inactivo');
+insert into Domiciliario values(102,'jhonny','rosero','mas de 20 años','inactivo');
+insert into Domiciliario values(103,'jose','angulo','menor de 5 años','activo');
+insert into trabaja values('10',100,'1/03/2020','19/03/2020');
+insert into trabaja values('10',101,'15/03/2019','23/03/2020');
+insert into trabaja values('13',102,'23/03/2020','23/06/2020');
+insert into trabaja values('13',103,'23/03/2020','23/04/2020');
