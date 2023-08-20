@@ -1,31 +1,23 @@
 ﻿using appRegistroEmpresaDomiciliaria.acessoDatos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data;
 
-namespace appRegistroEmpresaDomiciliaria.logica
-{
-    class EmpresaDomiciliaria
-    {
-        public int ingresarEmpresa(string nit,string nombre,string fecha,string nitCam) 
-        {
+namespace appRegistroEmpresaDomiciliaria.logica {
+    class EmpresaDomiciliaria {
+        public int ingresarEmpresa(string nit,string nombre,string fecha,string nitCam) {
             int resultado;
-            string consulta = "insert into Empresa_Domiciliaria (emp_nit,cam_nit,emp_nombre,emp_fechaoperar)values('" +nit+"','"+nitCam+"','"+nombre+"','"+fecha+"')";
+            string consulta = "insert into Empresa_Domiciliaria (emp_nit,cam_nit,emp_nombre,emp_fechaoperar)values('" + nit + "','" + nitCam + "','" + nombre + "','" + fecha + "')";
             resultado = Datos.ejecutarDML(consulta);
             return resultado;
         }
-        public int actualizarEmpresa(string nit, string nitCam, string nombre, string fechaOpe)
-        {
+
+        public int actualizarEmpresa(string nit, string nitCam, string nombre, string fechaOpe) {
             int resultado;
-            string consulta = "update empresa_domiciliaria set cam_nit = '" + nitCam + "', emp_nombre = '" + nombre + "', emp_fechaoperar = '" + fechaOpe+"' where emp_nit= '"+nit+"'";
+            string consulta = "update empresa_domiciliaria set cam_nit = '" + nitCam + "', emp_nombre = '" + nombre + "', emp_fechaoperar = '" + fechaOpe + "' where emp_nit= '" + nit + "'";
             resultado = Datos.ejecutarDML(consulta);
             return resultado;
         }
-        public int eliminarEmpresa(string nit)
-        {
+
+        public int eliminarEmpresa(string nit) {
             int resultado = 0;
             string consulta,consultaDependencia;
             consulta = "delete empresa_domiciliaria where emp_nit = '" + nit + "'";
@@ -34,14 +26,14 @@ namespace appRegistroEmpresaDomiciliaria.logica
             resultado += Datos.ejecutarDML(consulta);
             return resultado;
         }
-        public DataSet consultarEmpresa() 
-        {
+
+        public DataSet consultarEmpresa() {
             string consulta= "select emp_nit as \"Nit Empresa\", emp_nombre as \"Nombre Empresa\", emp_fechaoperar as \"Fecha Operación\",cam_nit as \"Nit Camara Comercio\" from empresa_domiciliaria";
             DataSet ds = Datos.ejecutarSelect(consulta);
             return ds;
         }
-        public DataSet consultarEmpresa(string nit)
-        {
+
+        public DataSet consultarEmpresa(string nit) {
             string consulta = "select * from empresa_domiciliaria where emp_nit='" + nit + "'";
             return Datos.ejecutarSelect(consulta);
         }
