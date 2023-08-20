@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using appRegistroEmpresaDomiciliaria.logica;
+using appRegistroEmpresaDomiciliaria.Utilidades;
 
 namespace appRegistroEmpresaDomiciliaria.dominio {
     public partial class VinculacionEmpresaDomiciliario : Form {
@@ -15,8 +16,8 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
             int resultadoTrab;
             double idDom;
             string nitEmp, fecIniTrab, fecFinTrab, id = "";
-            if (Valida.estalleno(txtNitEmpDom.Text) && Valida.estalleno(txtIdDomEmp.Text)) {
-                if (Valida.esNumerico(txtIdDomEmp.Text)) {
+            if (Utilidad.estalleno(txtNitEmpDom.Text) && Utilidad.estalleno(txtIdDomEmp.Text)) {
+                if (Utilidad.esNumerico(txtIdDomEmp.Text)) {
                     idDom = int.Parse(txtIdDomEmp.Text);
                     id += idDom;
                     nitEmp = txtNitEmpDom.Text;
@@ -26,23 +27,23 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
                         if (Valida.existeContrato(nitEmp, id, fecIniTrab, fecFinTrab) ==0) {
                             resultadoTrab = this.trabajo.ingresarTrabajo(nitEmp, idDom, fecIniTrab, fecFinTrab);
                             if (resultadoTrab > 0) {
-                                MessageBox.Show("Información Vinculación registrada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Utilidad.mostrarMensajeInformativo("Información Vinculación registrada");
                                 txtIdDomEmp.Text = "";
                                 txtNitEmpDom.Text = "";
                                 dtpFecIniDom.ResetText();
                                 dtpFecFinDom.ResetText();
                             }
                         } else {
-                            MessageBox.Show("Información no registrada porque ya existe la vinculación", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Utilidad.mostrarMensajeError("Información no registrada porque ya existe la vinculación");
                         }
                     } else {
-                        MessageBox.Show("Información no registrada porque no existe nit empresa o id domiciliario", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utilidad.mostrarMensajeError("Información no registrada porque no existe nit empresa o id domiciliario");
                     }
                 } else {
-                    MessageBox.Show("Dígite una id numerica válida","Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Dígite una id numerica válida");
                 }
             } else {
-                MessageBox.Show("Ninguno de los campos puede quedar vacío", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("Ninguno de los campos puede quedar vacío");
             }
         }
     }

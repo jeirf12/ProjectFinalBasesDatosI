@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using appRegistroEmpresaDomiciliaria.logica;
+using appRegistroEmpresaDomiciliaria.Utilidades;
 
 namespace appRegistroEmpresaDomiciliaria.dominio {
     public partial class GestionarEmpresaDomiciliaria : Form {
@@ -19,28 +20,28 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
             nomEmp = txtNomEmp.Text;
             fecOpeEmp = dtpFecOpeEmp.Value.Date.Day + "/" + dtpFecOpeEmp.Value.Date.Month + "/" + dtpFecOpeEmp.Value.Date.Year;
             nitCamEmp = txtNitCamEmp.Text;
-            if (Valida.estalleno(nitEmp) && Valida.estalleno(nomEmp) && Valida.estalleno(nitCamEmp)) {
+            if (Utilidad.estalleno(nitEmp) && Utilidad.estalleno(nomEmp) && Utilidad.estalleno(nitCamEmp)) {
                 if (Valida.existeEmpresa(nitEmp) == 0 && Valida.existeCamaraComercio(nitCamEmp) == 1) {
                     resultadoEmp = this.empresa.ingresarEmpresa(nitEmp, nomEmp, fecOpeEmp, nitCamEmp);
                     if (resultadoEmp > 0) {
-                        MessageBox.Show("Información empresa registrada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utilidad.mostrarMensajeInformativo("Información empresa registrada");
                         txtNitEmp.Text = "";
                         txtNomEmp.Text = "";
                         dtpFecOpeEmp.ResetText();
                         txtNitCamEmp.Text = "";
                     }
                 } else {
-                    MessageBox.Show("Información no registrada por duplicidad de nit empresa o no existe nit de camara comercio", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Información no registrada por duplicidad de nit empresa o no existe nit de camara comercio");
                 }
             } else {
-                MessageBox.Show("Alguno de los campos no puede quedar vacio", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("Alguno de los campos no puede quedar vacio");
             }
         }
 
         private void btnBuscarEmpresa_Click(object sender, EventArgs e) {
             DataSet ds;
             string nitEmp = txtBuscarNitEmp.Text;
-            if (Valida.estalleno(nitEmp)) {
+            if (Utilidad.estalleno(nitEmp)) {
                 ds = this.empresa.consultarEmpresa(nitEmp);
                 if (ds.Tables[0].Rows.Count > 0) {
                     lbActualizaNitEmp.Text = ds.Tables[0].Rows[0]["EMP_NIT"].ToString();
@@ -48,10 +49,10 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
                     dtpActualizaFecOpeEmpresa.Text = ds.Tables[0].Rows[0]["EMP_FECHAOPERAR"].ToString();
                     txtActualizaNitCamComercio.Text = ds.Tables[0].Rows[0]["CAM_NIT"].ToString();
                 } else {
-                    MessageBox.Show("No se encuentra registrada la empresa con ese nit", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("No se encuentra registrada la empresa con ese nit");
                 }
             } else {
-                MessageBox.Show("El campo no puede quedar vacio", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("El campo no puede quedar vacio");
             }
             txtBuscarNitEmp.Text = "";
         }
@@ -63,38 +64,38 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
             nitCam = txtActualizaNitCamComercio.Text;
             nomEmp = txtActualizaNomEmp.Text;
             fechaOpe = dtpActualizaFecOpeEmpresa.Value.Date.Day + "/" + dtpActualizaFecOpeEmpresa.Value.Date.Month + "/" + dtpActualizaFecOpeEmpresa.Value.Date.Year;
-            if (Valida.estalleno(nomEmp) && Valida.estalleno(nitCam)) {
+            if (Utilidad.estalleno(nomEmp) && Utilidad.estalleno(nitCam)) {
                 if (Valida.existeEmpresa(nitEmp) == 1 && Valida.existeCamaraComercio(nitCam) == 1) {
                     resultado = this.empresa.actualizarEmpresa(nitEmp, nitCam, nomEmp, fechaOpe);
                     if (resultado > 0) {
-                        MessageBox.Show("Información empresa actualizada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utilidad.mostrarMensajeInformativo("Información empresa actualizada");
                         lbActualizaNitEmp.Text = "~";
                         txtActualizaNitCamComercio.Text = "";
                         txtActualizaNomEmp.Text = "";
                         dtpActualizaFecOpeEmpresa.ResetText();
                     }
                 } else {
-                    MessageBox.Show("Información empresa no actualizada porque no existe la nit empresa o la nit de camara comercio", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Información empresa no actualizada porque no existe la nit empresa o la nit de camara comercio");
                 }
             } else {
-                MessageBox.Show("Alguno de los campos no puede quedar vacio", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("Alguno de los campos no puede quedar vacio");
             }
         }
 
         private void btnEliminarXnitEmpresa_Click(object sender, EventArgs e) {
             int resultado;
             string nit = txtEliminaXnitEmpresa.Text;
-            if (Valida.estalleno(nit)) {
+            if (Utilidad.estalleno(nit)) {
                 if (Valida.existeEmpresa(nit) == 1) {
                     resultado = this.empresa.eliminarEmpresa(nit);
                     if (resultado > 0) {
-                        MessageBox.Show("Información empresa domiciliaria eliminada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utilidad.mostrarMensajeInformativo("Información empresa domiciliaria eliminada");
                     }
                 } else {
-                    MessageBox.Show("Información empresa domiciliaria no eliminada porque no existe el nit", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Información empresa domiciliaria no eliminada porque no existe el nit");
                 }
             } else {
-                MessageBox.Show("El campo Digite el nit no puede quedar vacio", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("El campo Digite el nit no puede quedar vacio");
             }
             txtEliminaXnitEmpresa.Text = "";
         }

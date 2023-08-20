@@ -2,6 +2,7 @@
 using System.Data;
 using System.Windows.Forms;
 using appRegistroEmpresaDomiciliaria.logica;
+using appRegistroEmpresaDomiciliaria.Utilidades;
 
 namespace appRegistroEmpresaDomiciliaria.dominio {
     public partial class GestionarDomiciliario : Form {
@@ -22,15 +23,15 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
             if (rbActivo.Checked) estDom = "activo";
             else if (rbInactivo.Checked) estDom = "inactivo";
 
-            if (Valida.estalleno(txtIdDom.Text) && cbxAnioExpDom.SelectedItem!=null && Valida.estalleno(nomDom) && Valida.estalleno(apeDom) && Valida.estalleno(estDom)) {
+            if (Utilidad.estalleno(txtIdDom.Text) && cbxAnioExpDom.SelectedItem != null && Utilidad.estalleno(nomDom) && Utilidad.estalleno(apeDom) && Utilidad.estalleno(estDom)) {
                 anioExpDom = cbxAnioExpDom.SelectedItem.ToString();
-                if (Valida.esNumerico(txtIdDom.Text)) {
+                if (Utilidad.esNumerico(txtIdDom.Text)) {
                     idDom = int.Parse(txtIdDom.Text);
                     if (idDom > 0) {
                         if (Valida.existeDomiciliario(idDom) == 0) {
                             resultadoDom = this.domiciliario.ingresarDomiciliario(idDom, nomDom, apeDom, anioExpDom, estDom);
                             if (resultadoDom > 0) {
-                                MessageBox.Show("Información domiciliario registrada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                Utilidad.mostrarMensajeInformativo("Información domiciliario registrada");
                                 txtIdDom.Text = "";
                                 txtNomDom.Text = "";
                                 txtApeDom.Text = "";
@@ -39,17 +40,17 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
                                 rbInactivo.Checked = false;
                             }
                         } else {
-                            MessageBox.Show("Información no registrada por duplicidad de id", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Utilidad.mostrarMensajeError("Información no registrada por duplicidad de id");
                         }
                     } else {
-                        MessageBox.Show("Información no registrada por la id negativa", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utilidad.mostrarMensajeError("Información no registrada por la id negativa");
                     }
                 } else {
-                    MessageBox.Show("Dígite de nuevo una id válida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Dígite de nuevo una id válida");
                 }
                 txtIdDom.Text = "";
             } else {
-                MessageBox.Show("Ninguno de los campos puede quedar vacío", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("Ninguno de los campos puede quedar vacío");
             }
         }
 
@@ -57,8 +58,8 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
             DataSet ds;
             string estado;
             double id;
-            if (Valida.estalleno(txtBuscarIdDomiciliario.Text)) {
-                if (Valida.esNumerico(txtBuscarIdDomiciliario.Text)) {
+            if (Utilidad.estalleno(txtBuscarIdDomiciliario.Text)) {
+                if (Utilidad.esNumerico(txtBuscarIdDomiciliario.Text)) {
                     id = int.Parse(txtBuscarIdDomiciliario.Text);
                     ds = this.domiciliario.consultarDomiciliario(id);
                     if (ds.Tables[0].Rows.Count > 0) {
@@ -73,14 +74,14 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
                             rbActualizaInactivo.Select();
                         }
                     } else {
-                        MessageBox.Show("No se encuentra registrado el domiciliario con esa id", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utilidad.mostrarMensajeError("No se encuentra registrado el domiciliario con esa id");
                     }
                 } else {
-                    MessageBox.Show("Dígite una id válida", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Dígite una id válida");
                 }
                 txtBuscarIdDomiciliario.Text = "";
             } else {
-                MessageBox.Show("El campo no puede quedar vacío", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("El campo no puede quedar vacío");
             }
         }
 
@@ -93,17 +94,15 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
             } else if (rbActualizaInactivo.Checked) {
                 estado = "inactivo";
             }
-            if (Valida.estalleno(lbActualizaIdDomiciliario.Text) && Valida.estalleno(txtActualizaNomDomiciliario.Text) && Valida.estalleno(txtActualizaApeDomiciliario.Text) && cbxActualizaExpDomiciliario.SelectedItem != null && Valida.estalleno(estado)) {
+            if (Utilidad.estalleno(lbActualizaIdDomiciliario.Text) && Utilidad.estalleno(txtActualizaNomDomiciliario.Text) && Utilidad.estalleno(txtActualizaApeDomiciliario.Text) && cbxActualizaExpDomiciliario.SelectedItem != null && Utilidad.estalleno(estado)) {
                 id = int.Parse(lbActualizaIdDomiciliario.Text);
                 nombre = txtActualizaNomDomiciliario.Text;
                 apellido = txtActualizaApeDomiciliario.Text;
                 experiencia = cbxActualizaExpDomiciliario.SelectedItem.ToString();
-                /*El metodo buscar valida que el id del domiciliario exista, para poder actualizar, si no
-                     * lo encuentra lanza un messabox explicando al usuario que no en verdad no existe*/
                 if (Valida.existeDomiciliario(id) == 1) {
                     resultado = this.domiciliario.actualizarDomiciliario(id, nombre, apellido, experiencia, estado);
                     if (resultado > 0) {
-                        MessageBox.Show("Información domiciliario actualizada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Utilidad.mostrarMensajeInformativo("Información domiciliario actualizada");
                         lbActualizaIdDomiciliario.Text = "~";
                         txtActualizaNomDomiciliario.Text = "";
                         txtActualizaApeDomiciliario.Text = "";
@@ -112,32 +111,32 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
                         rbActualizaInactivo.Checked = false;
                     }
                 } else {
-                    MessageBox.Show("Información no actualizada porque no se encuentra registrado el domiciliario con esa id", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Información no actualizada porque no se encuentra registrado el domiciliario con esa id");
                 }
             } else {
-                MessageBox.Show("Ninguno de los campos puede quedar vacío", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("Ninguno de los campos puede quedar vacío");
             }
         }
 
         private void btnEliminarXidDomiciliario_Click(object sender, EventArgs e) {
             int resultado;
             double id;
-            if (Valida.estalleno(txtEliminaIdDomiciliario.Text)) {
-                if (Valida.esNumerico(txtEliminaIdDomiciliario.Text)) {
+            if (Utilidad.estalleno(txtEliminaIdDomiciliario.Text)) {
+                if (Utilidad.esNumerico(txtEliminaIdDomiciliario.Text)) {
                     id = int.Parse(txtEliminaIdDomiciliario.Text);
                     if (Valida.existeDomiciliario(id) == 1) {
                         resultado = this.domiciliario.eliminarDomiciliario(id);
                         if (resultado > 0) {
-                            MessageBox.Show("Información domiciliario eliminada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Utilidad.mostrarMensajeInformativo("Información domiciliario eliminada");
                         }
                     } else {
-                        MessageBox.Show("Información domiciliario no eliminada porque no existe el domiciliario con esa id", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Utilidad.mostrarMensajeError("Información domiciliario no eliminada porque no existe el domiciliario con esa id");
                     }
                 } else {
-                    MessageBox.Show("Dígite un valor válido numerico", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Utilidad.mostrarMensajeError("Dígite un valor válido numerico");
                 }
             } else {
-                MessageBox.Show("El campo no puede quedar vacío", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Utilidad.mostrarMensajeError("El campo no puede quedar vacío");
             }
             txtEliminaIdDomiciliario.Text = "";
         }

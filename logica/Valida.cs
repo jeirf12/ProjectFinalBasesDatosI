@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using appRegistroEmpresaDomiciliaria.acessoDatos;
 
 namespace appRegistroEmpresaDomiciliaria.logica {
@@ -35,7 +34,7 @@ namespace appRegistroEmpresaDomiciliaria.logica {
             return resultado;
         }
 
-        public static int buscar(string consulta, string nomColumna, string dato) {
+        private static int buscar(string consulta, string nomColumna, string dato) {
             int resultado = 0;
             DataSet ds = Datos.ejecutarSelect(consulta);
             if (ds.Tables[0].Rows.Count > 0) {
@@ -46,20 +45,6 @@ namespace appRegistroEmpresaDomiciliaria.logica {
                 }
             }
             return resultado;
-        }
-
-        public static Boolean esNumerico(string dato) {
-            Boolean resultado = true;
-            try {
-                int.Parse(dato);
-            } catch (Exception) {
-                resultado = false;
-            }
-            return resultado;
-        }
-
-        public static Boolean estalleno(string dato) {
-            return !dato.Contains(" ") && dato.Length > 0;
         }
     }
 }

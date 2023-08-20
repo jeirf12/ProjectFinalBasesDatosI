@@ -47,66 +47,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="acessoDatos\Datos.cs" />
-    <Compile Include="dominio\GestionarCamaraComercio.cs">
+    <Compile Include="AcessoDatos\Datos.cs" />
+    <Compile Include="Dominio\GestionarCamaraComercio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dominio\GestionarCamaraComercio.Designer.cs">
+    <Compile Include="Dominio\GestionarCamaraComercio.Designer.cs">
       <DependentUpon>GestionarCamaraComercio.cs</DependentUpon>
     </Compile>
-    <Compile Include="dominio\GestionarConsulta.cs">
+    <Compile Include="Dominio\GestionarConsulta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dominio\GestionarConsulta.Designer.cs">
+    <Compile Include="Dominio\GestionarConsulta.Designer.cs">
       <DependentUpon>GestionarConsulta.cs</DependentUpon>
     </Compile>
-    <Compile Include="dominio\GestionarDomiciliario.cs">
+    <Compile Include="Dominio\GestionarDomiciliario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dominio\GestionarDomiciliario.Designer.cs">
+    <Compile Include="Dominio\GestionarDomiciliario.Designer.cs">
       <DependentUpon>GestionarDomiciliario.cs</DependentUpon>
     </Compile>
-    <Compile Include="dominio\GestionarEmpresaDomiciliaria.cs">
+    <Compile Include="Dominio\GestionarEmpresaDomiciliaria.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dominio\GestionarEmpresaDomiciliaria.Designer.cs">
+    <Compile Include="Dominio\GestionarEmpresaDomiciliaria.Designer.cs">
       <DependentUpon>GestionarEmpresaDomiciliaria.cs</DependentUpon>
     </Compile>
-    <Compile Include="dominio\Principal.cs">
+    <Compile Include="Dominio\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dominio\Principal.Designer.cs">
+    <Compile Include="Dominio\Principal.Designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
-    <Compile Include="dominio\VinculacionEmpresaDomiciliario.cs">
+    <Compile Include="Dominio\VinculacionEmpresaDomiciliario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="dominio\VinculacionEmpresaDomiciliario.Designer.cs">
+    <Compile Include="Dominio\VinculacionEmpresaDomiciliario.Designer.cs">
       <DependentUpon>VinculacionEmpresaDomiciliario.cs</DependentUpon>
     </Compile>
-    <Compile Include="logica\CamaraComercio.cs" />
-    <Compile Include="logica\Domiciliario.cs" />
-    <Compile Include="logica\EmpresaDomiciliaria.cs" />
-    <Compile Include="logica\Trabaja.cs" />
-    <Compile Include="dominio\Program.cs" />
-    <Compile Include="logica\Valida.cs" />
+    <Compile Include="Logica\CamaraComercio.cs" />
+    <Compile Include="Logica\Domiciliario.cs" />
+    <Compile Include="Logica\EmpresaDomiciliaria.cs" />
+    <Compile Include="Logica\Trabaja.cs" />
+    <Compile Include="Dominio\Program.cs" />
+    <Compile Include="Logica\Valida.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="dominio\GestionarCamaraComercio.resx">
+    <Compile Include="Utilidades\Utilidad.cs" />
+    <EmbeddedResource Include="Dominio\GestionarCamaraComercio.resx">
       <DependentUpon>GestionarCamaraComercio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dominio\GestionarConsulta.resx">
+    <EmbeddedResource Include="Dominio\GestionarConsulta.resx">
       <DependentUpon>GestionarConsulta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dominio\GestionarDomiciliario.resx">
+    <EmbeddedResource Include="Dominio\GestionarDomiciliario.resx">
       <DependentUpon>GestionarDomiciliario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dominio\GestionarEmpresaDomiciliaria.resx">
+    <EmbeddedResource Include="Dominio\GestionarEmpresaDomiciliaria.resx">
       <DependentUpon>GestionarEmpresaDomiciliaria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dominio\Principal.resx">
+    <EmbeddedResource Include="Dominio\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="dominio\VinculacionEmpresaDomiciliario.resx">
+    <EmbeddedResource Include="Dominio\VinculacionEmpresaDomiciliario.resx">
       <DependentUpon>VinculacionEmpresaDomiciliario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
