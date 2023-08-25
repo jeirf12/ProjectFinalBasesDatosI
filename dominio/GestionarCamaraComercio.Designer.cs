@@ -1,7 +1,5 @@
-﻿namespace appRegistroEmpresaDomiciliaria.dominio
-{
-    partial class GestionarCamaraComercio
-    {
+﻿namespace appRegistroEmpresaDomiciliaria.dominio {
+    partial class GestionarCamaraComercio {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,23 +9,19 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
-
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.tbcGestionCamara = new System.Windows.Forms.TabControl();
             this.tbpRegistroCamara = new System.Windows.Forms.TabPage();
             this.pnlRegistroCamara = new System.Windows.Forms.Panel();
@@ -192,9 +186,7 @@
             this.pnlMostrarCamara.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCamaraComercio)).EndInit();
             this.ResumeLayout(false);
-
         }
-
         #endregion
 
         private System.Windows.Forms.TabControl tbcGestionCamara;
