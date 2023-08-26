@@ -36,8 +36,11 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
 
         private void btnMostrarCamaraComercio_Click(object sender, EventArgs e) {
             DataSet ds = this.camara.consultarCamaraComercio();
+
+            if (ds.Tables.Count == 0) return;
+
             dgvCamaraComercio.DataSource = ds;
-            dgvCamaraComercio.DataMember = "ResultadoDatos";
+            dgvCamaraComercio.DataMember = ds.Tables[0].TableName;
         }
     }
 }

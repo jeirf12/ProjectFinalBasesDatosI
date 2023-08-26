@@ -43,7 +43,7 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
             string nitEmp = txtBuscarNitEmp.Text;
             if (Utilidad.estalleno(nitEmp)) {
                 ds = this.empresa.consultarEmpresa(nitEmp);
-                if (ds.Tables[0].Rows.Count > 0) {
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0) {
                     lbActualizaNitEmp.Text = ds.Tables[0].Rows[0]["EMP_NIT"].ToString();
                     txtActualizaNomEmp.Text = ds.Tables[0].Rows[0]["EMP_NOMBRE"].ToString();
                     dtpActualizaFecOpeEmpresa.Text = ds.Tables[0].Rows[0]["EMP_FECHAOPERAR"].ToString();
@@ -101,8 +101,12 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
         }
 
         private void btnMostrarEmpresa_Click(object sender, EventArgs e) {
-            dgvEmpresaDomiciliaria.DataSource= this.empresa.consultarEmpresa();
-            dgvEmpresaDomiciliaria.DataMember = "ResultadoDatos";
+            DataSet ds = this.empresa.consultarEmpresa();
+
+            if (ds.Tables.Count == 0) return;
+
+            dgvEmpresaDomiciliaria.DataSource = ds;
+            dgvEmpresaDomiciliaria.DataMember = ds.Tables[0].TableName;
         }
     }
 }

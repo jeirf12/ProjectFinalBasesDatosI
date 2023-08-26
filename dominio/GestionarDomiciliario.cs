@@ -62,7 +62,7 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
                 if (Utilidad.esNumerico(txtBuscarIdDomiciliario.Text)) {
                     id = int.Parse(txtBuscarIdDomiciliario.Text);
                     ds = this.domiciliario.consultarDomiciliario(id);
-                    if (ds.Tables[0].Rows.Count > 0) {
+                    if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0) {
                         lbActualizaIdDomiciliario.Text = ds.Tables[0].Rows[0]["DOM_ID"].ToString();
                         txtActualizaNomDomiciliario.Text = ds.Tables[0].Rows[0]["DOM_NOMBRE"].ToString();
                         txtActualizaApeDomiciliario.Text = ds.Tables[0].Rows[0]["DOM_APELLIDO"].ToString();
@@ -142,8 +142,12 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
         }
 
         private void btnConsultarDomiciliario_Click(object sender, EventArgs e) {
-            dgvDomiciliario.DataSource = this.domiciliario.consultarDomiciliario();
-            dgvDomiciliario.DataMember = "ResultadoDatos";
+            DataSet ds = this.domiciliario.consultarDomiciliario();
+
+            if (ds.Tables.Count == 0) return;
+
+            dgvDomiciliario.DataSource = ds;
+            dgvDomiciliario.DataMember = ds.Tables[0].TableName;
         }
     }
 }

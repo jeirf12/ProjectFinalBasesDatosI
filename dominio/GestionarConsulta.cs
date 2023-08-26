@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using appRegistroEmpresaDomiciliaria.logica;
 
@@ -12,14 +13,22 @@ namespace appRegistroEmpresaDomiciliaria.dominio {
         }
         
         private void btnConsultaEmp_Click(object sender, EventArgs e) {
-            dgvDatosEmp.DataSource = this.trabajo.consultaTrabajo();
-            dgvDatosEmp.DataMember = "ResultadoDatos";
+            DataSet ds = this.trabajo.consultaTrabajo();
+            
+            if (ds.Tables.Count == 0) return;
+
+            dgvDatosEmp.DataSource = ds;
+            dgvDatosEmp.DataMember = ds.Tables[0].TableName;
         }
 
         private void btnConsultaXfecha_Click(object sender, EventArgs e) {
             string fechaIngresada = dtpConsulFecha.Value.Date.Day + " / " + dtpConsulFecha.Value.Date.Month + " / " + dtpConsulFecha.Value.Year;
-            dgvConsultaXfecha.DataSource = this.trabajo.consultaTrabajo(fechaIngresada);
-            dgvConsultaXfecha.DataMember = "ResultadoDatos";
+            DataSet ds = this.trabajo.consultaTrabajo(fechaIngresada);
+
+            if (ds.Tables.Count == 0) return;
+
+            dgvConsultaXfecha.DataSource = ds;
+            dgvConsultaXfecha.DataMember = ds.Tables[0].TableName;
         }
 
         private void btnDomiciliarioInactivo_Click(object sender, EventArgs e) {
