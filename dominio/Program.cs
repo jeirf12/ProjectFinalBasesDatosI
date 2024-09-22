@@ -1,8 +1,9 @@
-﻿using appRegistroEmpresaDomiciliaria.dominio;
-using System;
-using System.Windows.Forms;
+﻿namespace appRegistroEmpresaDomiciliaria {
 
-namespace appRegistroEmpresaDomiciliaria {
+    using appRegistroEmpresaDomiciliaria.dominio;
+    using System;
+    using System.Windows.Forms;
+
     static class Program {
         [STAThread]
         static void Main() {

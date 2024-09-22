@@ -1,28 +1,20 @@
-﻿using System;
-using System.Windows.Forms;
+﻿namespace appRegistroEmpresaDomiciliaria.Utilidades {
+    
+    using System.Text.RegularExpressions;
+    using System.Windows.Forms;
 
-namespace appRegistroEmpresaDomiciliaria.Utilidades {
     class Utilidad {
-        public static void mostrarMensajeInformativo(string mensaje) {
+
+        public static void mostrarMensajeInformativo(string mensaje) =>
             MessageBox.Show(mensaje, "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
 
-        public static void mostrarMensajeError(string mensaje) {
+        public static void mostrarMensajeError(string mensaje) =>
             MessageBox.Show(mensaje, "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
 
-        public static Boolean esNumerico(string dato) {
-            Boolean resultado = true;
-            try {
-                int.Parse(dato);
-            } catch (Exception) {
-                resultado = false;
-            }
-            return resultado;
-        }
+        public static bool esNumerico(string dato) =>
+            Regex.IsMatch(dato, @"[+-]?\\d*(\\.\\d+)?");
 
-        public static Boolean estalleno(string dato) {
-            return !dato.Contains(" ") && dato.Length > 0;
-        }
+        public static bool estalleno(string dato) => 
+            !dato.Contains(" ") && !string.IsNullOrEmpty(dato);
     }
 }

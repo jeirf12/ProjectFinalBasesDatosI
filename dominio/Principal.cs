@@ -1,8 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
+﻿namespace appRegistroEmpresaDomiciliaria.dominio {
 
-namespace appRegistroEmpresaDomiciliaria.dominio {
+    using System;
+    using System.Windows.Forms;
+
     public partial class Principal : Form {
+
         public Principal() {
             this.InitializeComponent();
         }
