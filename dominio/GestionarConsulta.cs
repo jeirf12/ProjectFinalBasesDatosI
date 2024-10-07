@@ -6,15 +6,16 @@
     using appRegistroEmpresaDomiciliaria.logica;
 
     public partial class GestionarConsulta : Form {
-        private Trabaja trabajo;
+
+        private Trabaja Trabajo;
 
         public GestionarConsulta() {
             this.InitializeComponent();
-            this.trabajo = new Trabaja();
+            this.Trabajo = new Trabaja();
         }
         
-        private void btnConsultaEmp_Click(object sender, EventArgs e) {
-            DataSet ds = this.trabajo.consultaTrabajo();
+        private void BtnConsultaEmp_Click(object sender, EventArgs e) {
+            DataSet ds = this.Trabajo.ConsultaTrabajo();
             
             if (ds.Tables.Count == 0) 
                 return;
@@ -23,9 +24,9 @@
             dgvDatosEmp.DataMember = ds.Tables[0].TableName;
         }
 
-        private void btnConsultaXfecha_Click(object sender, EventArgs e) {
+        private void BtnConsultaXfecha_Click(object sender, EventArgs e) {
             string fechaIngresada = $"{ dtpConsulFecha.Value.Date.Day } / { dtpConsulFecha.Value.Date.Month } / { dtpConsulFecha.Value.Year}";
-            DataSet ds = this.trabajo.consultaTrabajo(fechaIngresada);
+            DataSet ds = this.Trabajo.ConsultaTrabajo(fechaIngresada);
 
             if (ds.Tables.Count == 0) 
                 return;
@@ -34,8 +35,8 @@
             dgvConsultaXfecha.DataMember = ds.Tables[0].TableName;
         }
 
-        private void btnDomiciliarioInactivo_Click(object sender, EventArgs e) {
-            lbContDomInactivo.Text = $"{ this.trabajo.domiciliariosInactivos() }";
-        }
+        private void BtnDomiciliarioInactivo_Click(object sender, EventArgs e) =>
+            lbContDomInactivo.Text = $"{ this.Trabajo.DomiciliariosInactivos() }";
+
     }
 }

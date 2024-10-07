@@ -85,7 +85,7 @@
             this.btnGuardaCamaraComercio.TabIndex = 21;
             this.btnGuardaCamaraComercio.Text = "Guardar";
             this.btnGuardaCamaraComercio.UseVisualStyleBackColor = true;
-            this.btnGuardaCamaraComercio.Click += new System.EventHandler(this.btnGuardaCamaraComercio_Click);
+            this.btnGuardaCamaraComercio.Click += new System.EventHandler(this.BtnGuardaCamaraComercio_Click);
             // 
             // txtNomCam
             // 
@@ -166,7 +166,7 @@
             this.btnMostrarCamaraComercio.TabIndex = 0;
             this.btnMostrarCamaraComercio.Text = "Mostrar Camara Comercio";
             this.btnMostrarCamaraComercio.UseVisualStyleBackColor = true;
-            this.btnMostrarCamaraComercio.Click += new System.EventHandler(this.btnMostrarCamaraComercio_Click);
+            this.btnMostrarCamaraComercio.Click += new System.EventHandler(this.BtnMostrarCamaraComercio_Click);
             // 
             // GestionarCamaraComercio
             // 

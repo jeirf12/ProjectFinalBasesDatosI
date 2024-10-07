@@ -130,7 +130,7 @@
             this.btnGuardaDomiciliario.TabIndex = 39;
             this.btnGuardaDomiciliario.Text = "Guardar";
             this.btnGuardaDomiciliario.UseVisualStyleBackColor = true;
-            this.btnGuardaDomiciliario.Click += new System.EventHandler(this.btnGuardaDomiciliario_Click);
+            this.btnGuardaDomiciliario.Click += new System.EventHandler(this.BtnGuardaDomiciliario_Click);
             // 
             // rbInactivo
             // 
@@ -285,7 +285,7 @@
             this.btnConsultarDomiciliario.TabIndex = 0;
             this.btnConsultarDomiciliario.Text = "Consultar Domiciliario";
             this.btnConsultarDomiciliario.UseVisualStyleBackColor = true;
-            this.btnConsultarDomiciliario.Click += new System.EventHandler(this.btnConsultarDomiciliario_Click);
+            this.btnConsultarDomiciliario.Click += new System.EventHandler(this.BtnConsultarDomiciliario_Click);
             // 
             // tbpActualizarDomiciliario
             // 
@@ -349,7 +349,7 @@
             this.btnBuscarDomiciliario.TabIndex = 15;
             this.btnBuscarDomiciliario.Text = "Buscar";
             this.btnBuscarDomiciliario.UseVisualStyleBackColor = true;
-            this.btnBuscarDomiciliario.Click += new System.EventHandler(this.btnBuscarDomiciliario_Click);
+            this.btnBuscarDomiciliario.Click += new System.EventHandler(this.BtnBuscarDomiciliario_Click);
             // 
             // txtBuscarIdDomiciliario
             // 
@@ -376,7 +376,7 @@
             this.btnActualizarDomiciliario.TabIndex = 12;
             this.btnActualizarDomiciliario.Text = "Actualizar";
             this.btnActualizarDomiciliario.UseVisualStyleBackColor = true;
-            this.btnActualizarDomiciliario.Click += new System.EventHandler(this.btnActualizarDomiciliario_Click);
+            this.btnActualizarDomiciliario.Click += new System.EventHandler(this.BtnActualizarDomiciliario_Click);
             // 
             // rbActualizaInactivo
             // 
@@ -519,7 +519,7 @@
             this.btnEliminarXidDomiciliario.TabIndex = 3;
             this.btnEliminarXidDomiciliario.Text = "Eliminar";
             this.btnEliminarXidDomiciliario.UseVisualStyleBackColor = true;
-            this.btnEliminarXidDomiciliario.Click += new System.EventHandler(this.btnEliminarXidDomiciliario_Click);
+            this.btnEliminarXidDomiciliario.Click += new System.EventHandler(this.BtnEliminarXidDomiciliario_Click);
             // 
             // txtEliminaIdDomiciliario
             // 

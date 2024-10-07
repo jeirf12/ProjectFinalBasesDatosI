@@ -145,7 +145,7 @@
             this.btnGuardarEmpresa.TabIndex = 24;
             this.btnGuardarEmpresa.Text = "Guardar";
             this.btnGuardarEmpresa.UseVisualStyleBackColor = true;
-            this.btnGuardarEmpresa.Click += new System.EventHandler(this.btnGuardarEmpresa_Click);
+            this.btnGuardarEmpresa.Click += new System.EventHandler(this.BtnGuardarEmpresa_Click);
             // 
             // txtNomEmp
             // 
@@ -236,7 +236,7 @@
             this.btnMostrarEmpresa.TabIndex = 0;
             this.btnMostrarEmpresa.Text = "Mostrar Empresa Domiciliaria";
             this.btnMostrarEmpresa.UseVisualStyleBackColor = true;
-            this.btnMostrarEmpresa.Click += new System.EventHandler(this.btnMostrarEmpresa_Click);
+            this.btnMostrarEmpresa.Click += new System.EventHandler(this.BtnMostrarEmpresa_Click);
             // 
             // tbpActualizarEmpresa
             // 
@@ -304,7 +304,7 @@
             this.btnBuscarEmpresa.TabIndex = 13;
             this.btnBuscarEmpresa.Text = "Buscar";
             this.btnBuscarEmpresa.UseVisualStyleBackColor = true;
-            this.btnBuscarEmpresa.Click += new System.EventHandler(this.btnBuscarEmpresa_Click);
+            this.btnBuscarEmpresa.Click += new System.EventHandler(this.BtnBuscarEmpresa_Click);
             // 
             // txtBuscarNitEmp
             // 
@@ -338,7 +338,7 @@
             this.btnActualizarEmpresa.TabIndex = 9;
             this.btnActualizarEmpresa.Text = "Actualizar";
             this.btnActualizarEmpresa.UseVisualStyleBackColor = true;
-            this.btnActualizarEmpresa.Click += new System.EventHandler(this.btnActualizarEmpresa_Click);
+            this.btnActualizarEmpresa.Click += new System.EventHandler(this.BtnActualizarEmpresa_Click);
             // 
             // lbActualizaNitCamaraComercio
             // 
@@ -426,7 +426,7 @@
             this.btnEliminarXnitEmpresa.TabIndex = 3;
             this.btnEliminarXnitEmpresa.Text = "Eliminar";
             this.btnEliminarXnitEmpresa.UseVisualStyleBackColor = true;
-            this.btnEliminarXnitEmpresa.Click += new System.EventHandler(this.btnEliminarXnitEmpresa_Click);
+            this.btnEliminarXnitEmpresa.Click += new System.EventHandler(this.BtnEliminarXnitEmpresa_Click);
             // 
             // txtEliminaXnitEmpresa
             // 

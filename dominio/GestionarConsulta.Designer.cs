@@ -98,7 +98,7 @@
             this.btnConsultaEmp.TabIndex = 0;
             this.btnConsultaEmp.Text = "Consultar Empresas";
             this.btnConsultaEmp.UseVisualStyleBackColor = true;
-            this.btnConsultaEmp.Click += new System.EventHandler(this.btnConsultaEmp_Click);
+            this.btnConsultaEmp.Click += new System.EventHandler(this.BtnConsultaEmp_Click);
             // 
             // tbpConsultaFecha
             // 
@@ -150,7 +150,7 @@
             this.btnConsultaXfecha.TabIndex = 1;
             this.btnConsultaXfecha.Text = "Consultar";
             this.btnConsultaXfecha.UseVisualStyleBackColor = true;
-            this.btnConsultaXfecha.Click += new System.EventHandler(this.btnConsultaXfecha_Click);
+            this.btnConsultaXfecha.Click += new System.EventHandler(this.BtnConsultaXfecha_Click);
             // 
             // dtpConsulFecha
             // 
@@ -187,7 +187,7 @@
             this.btnDomiciliarioInactivo.TabIndex = 2;
             this.btnDomiciliarioInactivo.Text = "Consulta N° Inactivos";
             this.btnDomiciliarioInactivo.UseVisualStyleBackColor = true;
-            this.btnDomiciliarioInactivo.Click += new System.EventHandler(this.btnDomiciliarioInactivo_Click);
+            this.btnDomiciliarioInactivo.Click += new System.EventHandler(this.BtnDomiciliarioInactivo_Click);
             // 
             // lbContDomInactivo
             // 

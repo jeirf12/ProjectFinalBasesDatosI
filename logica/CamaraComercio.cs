@@ -5,16 +5,16 @@
 
     class CamaraComercio {
 
-        public int ingresarCamaraComercio(string nit, string nombre) {
+        public int IngresarCamaraComercio(string nit, string nombre) {
             int resultado;
             string consulta = $"insert into Camara_Comercio (cam_nit, cam_nombre) values('{ nit }', '{ nombre }')";
-            resultado = Datos.ejecutarDML(consulta);
+            resultado = Datos.EjecutarDML(consulta);
             return resultado;
         }
 
-        public DataSet consultarCamaraComercio() {
+        public DataSet ConsultarCamaraComercio() {
             string consulta = "select cam_nit as \"Nit Camara Comercio\", cam_nombre as \"Nombre Camara Comercio\" from camara_comercio";
-            DataSet ds = Datos.ejecutarSelect(consulta);
+            DataSet ds = Datos.EjecutarSelect(consulta);
             return ds;
         }
     }

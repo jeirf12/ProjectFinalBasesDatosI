@@ -84,7 +84,7 @@
             this.btnRegistraVinculacion.TabIndex = 39;
             this.btnRegistraVinculacion.Text = "Registrar";
             this.btnRegistraVinculacion.UseVisualStyleBackColor = true;
-            this.btnRegistraVinculacion.Click += new System.EventHandler(this.btnRegistraVinculacion_Click);
+            this.btnRegistraVinculacion.Click += new System.EventHandler(this.BtnRegistraVinculacion_Click);
             // 
             // lbMenVinculacion
             // 

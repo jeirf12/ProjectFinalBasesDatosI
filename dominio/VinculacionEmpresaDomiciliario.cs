@@ -7,28 +7,28 @@
 
     public partial class VinculacionEmpresaDomiciliario : Form {
 
-        private Trabaja trabajo;
+        private Trabaja Trabajo;
 
         public VinculacionEmpresaDomiciliario() {
             this.InitializeComponent();
-            this.trabajo = new Trabaja();
+            this.Trabajo = new Trabaja();
         }
 
-        private void btnRegistraVinculacion_Click(object sender, EventArgs e)
+        private void BtnRegistraVinculacion_Click(object sender, EventArgs e)
         {
             int resultadoTrab;
             double idDom;
             string nitEmp, fecIniTrab, fecFinTrab, id = string.Empty;
             if (
-                !Utilidad.estalleno(txtNitEmpDom.Text)
-                || !Utilidad.estalleno(txtIdDomEmp.Text)
+                !Utilidad.Estalleno(txtNitEmpDom.Text)
+                || !Utilidad.Estalleno(txtIdDomEmp.Text)
                 ) {
-                Utilidad.mostrarMensajeError("Ninguno de los campos puede quedar vacío");
+                Utilidad.MostrarMensajeError("Ninguno de los campos puede quedar vacío");
                 return;
             }
 
-            if (!Utilidad.esNumerico(txtIdDomEmp.Text)) {
-                Utilidad.mostrarMensajeError("Dígite una id numerica válida");
+            if (!Utilidad.EsNumerico(txtIdDomEmp.Text)) {
+                Utilidad.MostrarMensajeError("Dígite una id numerica válida");
                 return;
             }
 
@@ -36,10 +36,10 @@
             nitEmp = txtNitEmpDom.Text;
 
             if (
-                Valida.existeEmpresa(nitEmp) != 1
-                || Valida.existeDomiciliario(idDom) != 1
+                Valida.ExisteEmpresa(nitEmp) != 1
+                || Valida.ExisteDomiciliario(idDom) != 1
                 ) {
-                Utilidad.mostrarMensajeError("Información no registrada porque no existe nit empresa o id domiciliario");
+                Utilidad.MostrarMensajeError("Información no registrada porque no existe nit empresa o id domiciliario");
                 return;
             }
 
@@ -47,14 +47,14 @@
             fecIniTrab = $"{ dtpFecIniDom.Value.Date.Day }/{ dtpFecIniDom.Value.Date.Month }/{ dtpFecFinDom.Value.Date.Year }";
             fecFinTrab = $"{ dtpFecFinDom.Value.Date.Day }/{ dtpFecFinDom.Value.Date.Month }/{ dtpFecFinDom.Value.Date.Year }";
 
-            if (Valida.existeContrato(nitEmp, id, fecIniTrab, fecFinTrab) != 0) {
-                Utilidad.mostrarMensajeError("Información no registrada porque ya existe la vinculación");
+            if (Valida.ExisteContrato(nitEmp, id, fecIniTrab, fecFinTrab) != 0) {
+                Utilidad.MostrarMensajeError("Información no registrada porque ya existe la vinculación");
                 return;
             }
 
-            resultadoTrab = this.trabajo.ingresarTrabajo(nitEmp, idDom, fecIniTrab, fecFinTrab);
+            resultadoTrab = this.Trabajo.IngresarTrabajo(nitEmp, idDom, fecIniTrab, fecFinTrab);
             if (resultadoTrab > 0) {
-                Utilidad.mostrarMensajeInformativo("Información Vinculación registrada");
+                Utilidad.MostrarMensajeInformativo("Información Vinculación registrada");
                 txtIdDomEmp.Text = string.Empty;
                 txtNitEmpDom.Text = string.Empty;
                 dtpFecIniDom.ResetText();

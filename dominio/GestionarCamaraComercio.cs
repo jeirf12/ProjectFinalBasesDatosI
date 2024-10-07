@@ -8,40 +8,40 @@
 
     public partial class GestionarCamaraComercio : Form {
 
-        private CamaraComercio camara;
+        private CamaraComercio Camara;
 
         public GestionarCamaraComercio() {
             this.InitializeComponent();
-            this.camara = new CamaraComercio();
+            this.Camara = new CamaraComercio();
         }
 
-        private void btnGuardaCamaraComercio_Click(object sender, EventArgs e) {
+        private void BtnGuardaCamaraComercio_Click(object sender, EventArgs e) {
             int resultadoCam;
             string nitCam, NomCam;
             nitCam = txtNitCam.Text;
             NomCam = txtNomCam.Text;
 
-            if (!Utilidad.estalleno(nitCam) || !Utilidad.estalleno(NomCam)) {
-                Utilidad.mostrarMensajeError("Ninguno de los campos puede quedar vacio");
+            if (!Utilidad.Estalleno(nitCam) || !Utilidad.Estalleno(NomCam)) {
+                Utilidad.MostrarMensajeError("Ninguno de los campos puede quedar vacio");
                 return;
             }
 
-            if (Valida.existeCamaraComercio(nitCam) != 0) {
-                Utilidad.mostrarMensajeError("Información no registrada por duplicidad de nit");
+            if (Valida.ExisteCamaraComercio(nitCam) != 0) {
+                Utilidad.MostrarMensajeError("Información no registrada por duplicidad de nit");
                 return;
             }
             
-            resultadoCam = this.camara.ingresarCamaraComercio(nitCam, NomCam);
+            resultadoCam = this.Camara.IngresarCamaraComercio(nitCam, NomCam);
             
             if (resultadoCam > 0) {
-                Utilidad.mostrarMensajeInformativo("Información Camara Comercio registrada");
-                txtNitCam.Text = "";
-                txtNomCam.Text = "";
+                Utilidad.MostrarMensajeInformativo("Información Camara Comercio registrada");
+                txtNitCam.Text = string.Empty;
+                txtNomCam.Text = string.Empty;
             }    
         }
 
-        private void btnMostrarCamaraComercio_Click(object sender, EventArgs e) {
-            DataSet ds = this.camara.consultarCamaraComercio();
+        private void BtnMostrarCamaraComercio_Click(object sender, EventArgs e) {
+            DataSet ds = this.Camara.ConsultarCamaraComercio();
 
             if (ds.Tables.Count == 0) 
                 return;

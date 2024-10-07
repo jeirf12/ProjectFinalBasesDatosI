@@ -8,14 +8,14 @@
 
     public partial class GestionarDomiciliario : Form {
 
-        private Domiciliario domiciliario;
+        private Domiciliario Domiciliario;
 
         public GestionarDomiciliario() {
             this.InitializeComponent();
-            this.domiciliario = new Domiciliario();
+            this.Domiciliario = new Domiciliario();
         }
         
-        private void btnGuardaDomiciliario_Click(object sender, EventArgs e) {
+        private void BtnGuardaDomiciliario_Click(object sender, EventArgs e) {
             int resultadoDom;
             double idDom;
             string nomDom, apeDom, anioExpDom, estDom = string.Empty;
@@ -27,39 +27,39 @@
             else if (rbInactivo.Checked) 
                 estDom = "inactivo";
 
-            if (!Utilidad.estalleno(txtIdDom.Text) 
+            if (!Utilidad.Estalleno(txtIdDom.Text) 
                 || cbxAnioExpDom.SelectedItem == null 
-                || !Utilidad.estalleno(nomDom) 
-                || !Utilidad.estalleno(apeDom) 
-                || !Utilidad.estalleno(estDom)
+                || !Utilidad.Estalleno(nomDom) 
+                || !Utilidad.Estalleno(apeDom) 
+                || !Utilidad.Estalleno(estDom)
                 ) {
-                Utilidad.mostrarMensajeError("Ninguno de los campos puede quedar vacío");
+                Utilidad.MostrarMensajeError("Ninguno de los campos puede quedar vacío");
                 return;
             }
             
-            if (!Utilidad.esNumerico(txtIdDom.Text)) {
-                Utilidad.mostrarMensajeError("Dígite de nuevo una id válida");
+            if (!Utilidad.EsNumerico(txtIdDom.Text)) {
+                Utilidad.MostrarMensajeError("Dígite de nuevo una id válida");
                 return;
             }
 
             idDom = int.Parse(txtIdDom.Text);
             
             if (idDom <= 0) {
-                Utilidad.mostrarMensajeError("El campo id del domiciliario no puede ser negativa o igual a cero");
+                Utilidad.MostrarMensajeError("El campo id del domiciliario no puede ser negativa o igual a cero");
                 return;
             }
             
-            if (Valida.existeDomiciliario(idDom) != 0) {
-                Utilidad.mostrarMensajeError("Información no registrada por duplicidad de id");
+            if (Valida.ExisteDomiciliario(idDom) != 0) {
+                Utilidad.MostrarMensajeError("Información no registrada por duplicidad de id");
                 return;
             }
 
             anioExpDom = cbxAnioExpDom.SelectedItem.ToString();
 
-            resultadoDom = this.domiciliario.ingresarDomiciliario(idDom, nomDom, apeDom, anioExpDom, estDom);
+            resultadoDom = this.Domiciliario.IngresarDomiciliario(idDom, nomDom, apeDom, anioExpDom, estDom);
 
             if (resultadoDom > 0) {
-                Utilidad.mostrarMensajeInformativo("Información domiciliario registrada");
+                Utilidad.MostrarMensajeInformativo("Información domiciliario registrada");
                 txtIdDom.Text = string.Empty;
                 txtNomDom.Text = string.Empty;
                 txtApeDom.Text = string.Empty;
@@ -70,26 +70,26 @@
             
         }
 
-        private void btnBuscarDomiciliario_Click(object sender, EventArgs e) {
+        private void BtnBuscarDomiciliario_Click(object sender, EventArgs e) {
             DataSet ds;
             string estado;
             double id;
 
-            if (!Utilidad.estalleno(txtBuscarIdDomiciliario.Text)) {
-                Utilidad.mostrarMensajeError("El campo no puede quedar vacío");
+            if (!Utilidad.Estalleno(txtBuscarIdDomiciliario.Text)) {
+                Utilidad.MostrarMensajeError("El campo no puede quedar vacío");
                 return;
             }
             
-            if (!Utilidad.esNumerico(txtBuscarIdDomiciliario.Text)) {
-                Utilidad.mostrarMensajeError("Dígite una id válida");
+            if (!Utilidad.EsNumerico(txtBuscarIdDomiciliario.Text)) {
+                Utilidad.MostrarMensajeError("Dígite una id válida");
                 return;
             }
                 
             id = int.Parse(txtBuscarIdDomiciliario.Text);
-            ds = this.domiciliario.consultarDomiciliario(id);
+            ds = this.Domiciliario.ConsultarDomiciliario(id);
             if (ds.Tables.Count == 0 || ds.Tables[0].Rows.Count == 0)
             {
-                Utilidad.mostrarMensajeError("No se encuentra registrado el domiciliario con esa id");
+                Utilidad.MostrarMensajeError("No se encuentra registrado el domiciliario con esa id");
                 return;
             }
             
@@ -105,7 +105,7 @@
                 rbActualizaInactivo.Select();
         }
 
-        private void btnActualizarDomiciliario_Click(object sender, EventArgs e) {
+        private void BtnActualizarDomiciliario_Click(object sender, EventArgs e) {
             int resultado;
             double id;
             string nombre, apellido, experiencia, estado = string.Empty;
@@ -115,20 +115,20 @@
                 estado = "inactivo";
 
             if (
-                !Utilidad.estalleno(lbActualizaIdDomiciliario.Text)
-                || !Utilidad.estalleno(txtActualizaNomDomiciliario.Text)
-                || !Utilidad.estalleno(txtActualizaApeDomiciliario.Text)
+                !Utilidad.Estalleno(lbActualizaIdDomiciliario.Text)
+                || !Utilidad.Estalleno(txtActualizaNomDomiciliario.Text)
+                || !Utilidad.Estalleno(txtActualizaApeDomiciliario.Text)
                 || cbxActualizaExpDomiciliario.SelectedItem == null
-                || !Utilidad.estalleno(estado)
+                || !Utilidad.Estalleno(estado)
                 ) {
-                Utilidad.mostrarMensajeError("Ninguno de los campos puede quedar vacío");
+                Utilidad.MostrarMensajeError("Ninguno de los campos puede quedar vacío");
                 return;
             }
             
             id = int.Parse(lbActualizaIdDomiciliario.Text);
 
-            if (Valida.existeDomiciliario(id) != 1) {
-                Utilidad.mostrarMensajeError("Información no actualizada porque no se encuentra registrado el domiciliario con esa id");
+            if (Valida.ExisteDomiciliario(id) != 1) {
+                Utilidad.MostrarMensajeError("Información no actualizada porque no se encuentra registrado el domiciliario con esa id");
                 return;
             }
 
@@ -136,9 +136,9 @@
             apellido = txtActualizaApeDomiciliario.Text;
             experiencia = cbxActualizaExpDomiciliario.SelectedItem.ToString();
 
-            resultado = this.domiciliario.actualizarDomiciliario(id, nombre, apellido, experiencia, estado);
+            resultado = this.Domiciliario.ActualizarDomiciliario(id, nombre, apellido, experiencia, estado);
             if (resultado > 0) {
-                Utilidad.mostrarMensajeInformativo("Información domiciliario actualizada");
+                Utilidad.MostrarMensajeInformativo("Información domiciliario actualizada");
                 lbActualizaIdDomiciliario.Text = "~";
                 txtActualizaNomDomiciliario.Text = string.Empty;
                 txtActualizaApeDomiciliario.Text = string.Empty;
@@ -148,35 +148,35 @@
             }
         }
 
-        private void btnEliminarXidDomiciliario_Click(object sender, EventArgs e) {
+        private void BtnEliminarXidDomiciliario_Click(object sender, EventArgs e) {
             int resultado;
             double id;
-            if (!Utilidad.estalleno(txtEliminaIdDomiciliario.Text)) {
-                Utilidad.mostrarMensajeError("El campo no puede quedar vacío");
+            if (!Utilidad.Estalleno(txtEliminaIdDomiciliario.Text)) {
+                Utilidad.MostrarMensajeError("El campo no puede quedar vacío");
                 return;
             }
 
-            if (!Utilidad.esNumerico(txtEliminaIdDomiciliario.Text)) {
-                Utilidad.mostrarMensajeError("Dígite un valor válido numerico");
+            if (!Utilidad.EsNumerico(txtEliminaIdDomiciliario.Text)) {
+                Utilidad.MostrarMensajeError("Dígite un valor válido numerico");
                 return;
             }
 
             id = int.Parse(txtEliminaIdDomiciliario.Text);
             
-            if (Valida.existeDomiciliario(id) != 1) {
-                Utilidad.mostrarMensajeError("Información domiciliario no eliminada porque no existe el domiciliario con esa id");
+            if (Valida.ExisteDomiciliario(id) != 1) {
+                Utilidad.MostrarMensajeError("Información domiciliario no eliminada porque no existe el domiciliario con esa id");
                 return;
             }
             
-            resultado = this.domiciliario.eliminarDomiciliario(id);
+            resultado = this.Domiciliario.EliminarDomiciliario(id);
             if (resultado > 0) {
-                Utilidad.mostrarMensajeInformativo("Información domiciliario eliminada");
+                Utilidad.MostrarMensajeInformativo("Información domiciliario eliminada");
             }
-            txtEliminaIdDomiciliario.Text = "";
+            txtEliminaIdDomiciliario.Text = string.Empty;
         }
 
-        private void btnConsultarDomiciliario_Click(object sender, EventArgs e) {
-            DataSet ds = this.domiciliario.consultarDomiciliario();
+        private void BtnConsultarDomiciliario_Click(object sender, EventArgs e) {
+            DataSet ds = this.Domiciliario.ConsultarDomiciliario();
 
             if (ds.Tables.Count == 0) 
                 return;

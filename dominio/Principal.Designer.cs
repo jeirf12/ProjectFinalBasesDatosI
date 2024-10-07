@@ -38,7 +38,7 @@
             this.btnGestionarEmpresa.TabIndex = 0;
             this.btnGestionarEmpresa.Text = "Gestionar Empresa Domiciliaria";
             this.btnGestionarEmpresa.UseVisualStyleBackColor = true;
-            this.btnGestionarEmpresa.Click += new System.EventHandler(this.btnGestionarEmpresa_Click);
+            this.btnGestionarEmpresa.Click += new System.EventHandler(this.BtnGestionarEmpresa_Click);
             // 
             // btnGestionarCamara
             // 
@@ -48,7 +48,7 @@
             this.btnGestionarCamara.TabIndex = 1;
             this.btnGestionarCamara.Text = "Gestionar Camara Comercio";
             this.btnGestionarCamara.UseVisualStyleBackColor = true;
-            this.btnGestionarCamara.Click += new System.EventHandler(this.btnGestionarCamara_Click);
+            this.btnGestionarCamara.Click += new System.EventHandler(this.BtnGestionarCamara_Click);
             // 
             // bntGestionarDomiciliario
             // 
@@ -58,7 +58,7 @@
             this.bntGestionarDomiciliario.TabIndex = 2;
             this.bntGestionarDomiciliario.Text = "Gestionar Domiciliario";
             this.bntGestionarDomiciliario.UseVisualStyleBackColor = true;
-            this.bntGestionarDomiciliario.Click += new System.EventHandler(this.bntGestionarDomiciliario_Click);
+            this.bntGestionarDomiciliario.Click += new System.EventHandler(this.BntGestionarDomiciliario_Click);
             // 
             // btnVinculacionEmpresa
             // 
@@ -68,7 +68,7 @@
             this.btnVinculacionEmpresa.TabIndex = 3;
             this.btnVinculacionEmpresa.Text = "Vinculación Empresa-Domiciliario";
             this.btnVinculacionEmpresa.UseVisualStyleBackColor = true;
-            this.btnVinculacionEmpresa.Click += new System.EventHandler(this.btnVinculacionEmpresa_Click);
+            this.btnVinculacionEmpresa.Click += new System.EventHandler(this.BtnVinculacionEmpresa_Click);
             // 
             // btnConsulta
             // 
@@ -78,7 +78,7 @@
             this.btnConsulta.TabIndex = 4;
             this.btnConsulta.Text = "Gestionar Consultas";
             this.btnConsulta.UseVisualStyleBackColor = true;
-            this.btnConsulta.Click += new System.EventHandler(this.btnConsulta_Click);
+            this.btnConsulta.Click += new System.EventHandler(this.BtnConsulta_Click);
             // 
             // Principal
             // 
