@@ -4,6 +4,7 @@
     using System.Data;
     using System.Windows.Forms;
     using appRegistroEmpresaDomiciliaria.logica;
+    using appRegistroEmpresaDomiciliaria.Utilidades;
 
     public partial class GestionarConsulta : Form {
 
@@ -17,8 +18,12 @@
         private void BtnConsultaEmp_Click(object sender, EventArgs e) {
             DataSet ds = this.Trabajo.ConsultaTrabajo();
             
-            if (ds.Tables.Count == 0) 
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                Utilidad.MostrarMensajeInformativo("No se ha encontrado información sobre el trabajo de los domiciliarios, " +
+                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador");
                 return;
+            }
 
             dgvDatosEmp.DataSource = ds;
             dgvDatosEmp.DataMember = ds.Tables[0].TableName;
@@ -28,8 +33,12 @@
             string fechaIngresada = $"{ dtpConsulFecha.Value.Date.Day } / { dtpConsulFecha.Value.Date.Month } / { dtpConsulFecha.Value.Year}";
             DataSet ds = this.Trabajo.ConsultaTrabajo(fechaIngresada);
 
-            if (ds.Tables.Count == 0) 
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                Utilidad.MostrarMensajeInformativo("No se ha encontrado información de los domiciliarios con esa fecha, " +
+                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador");
                 return;
+            }
 
             dgvConsultaXfecha.DataSource = ds;
             dgvConsultaXfecha.DataMember = ds.Tables[0].TableName;

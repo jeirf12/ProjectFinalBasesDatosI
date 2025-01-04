@@ -178,8 +178,12 @@
         private void BtnConsultarDomiciliario_Click(object sender, EventArgs e) {
             DataSet ds = this.Domiciliario.ConsultarDomiciliario();
 
-            if (ds.Tables.Count == 0) 
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                Utilidad.MostrarMensajeInformativo("No se ha encontrado información sobre los domiciliarios, " +
+                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador");
                 return;
+            }
 
             dgvDomiciliario.DataSource = ds;
             dgvDomiciliario.DataMember = ds.Tables[0].TableName;

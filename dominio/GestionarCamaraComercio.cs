@@ -43,8 +43,12 @@
         private void BtnMostrarCamaraComercio_Click(object sender, EventArgs e) {
             DataSet ds = this.Camara.ConsultarCamaraComercio();
 
-            if (ds.Tables.Count == 0) 
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                Utilidad.MostrarMensajeInformativo("No se ha encontrado información sobre las camaras de comercio, " +
+                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador");
                 return;
+            }
 
             dgvCamaraComercio.DataSource = ds;
             dgvCamaraComercio.DataMember = ds.Tables[0].TableName;

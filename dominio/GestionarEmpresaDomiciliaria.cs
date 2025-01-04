@@ -123,8 +123,12 @@
         private void BtnMostrarEmpresa_Click(object sender, EventArgs e) {
             DataSet ds = this.Empresa.ConsultarEmpresa();
 
-            if (ds.Tables.Count == 0) 
+            if (ds.Tables[0].Rows.Count == 0)
+            {
+                Utilidad.MostrarMensajeInformativo("No se ha encontrado información sobre la empresas domiciliarias, " +
+                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador");
                 return;
+            }
 
             dgvEmpresaDomiciliaria.DataSource = ds;
             dgvEmpresaDomiciliaria.DataMember = ds.Tables[0].TableName;
