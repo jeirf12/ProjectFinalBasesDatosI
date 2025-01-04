@@ -7,7 +7,13 @@
 
     class Datos {
 
-        private static string CadenaConexion = "Data Source = localhost:1521; User ID = proyectobases1; Password = oracle";
+        private static readonly string FuenteInformacion = "localhost:1521";
+
+        private static readonly string Usuario = "proyectobases1";
+
+        private static readonly string Contrasenia = "oracle";
+
+        private static string CadenaConexion = $"Data Source = { FuenteInformacion }; User ID = { Usuario }; Password = { Contrasenia }";
 
         public static int EjecutarDML(string consulta) {
             int filasAfectadas = 0;
@@ -19,7 +25,8 @@
                 filasAfectadas = miComando.ExecuteNonQuery();
                 miConexion.Close();
             } catch (Exception ex) {
-                Utilidad.MostrarMensajeError("Hubo un error con la base de datos al ejecutar la setencia DML, Comuniquese con soporte tecnico o el administrador");
+                Utilidad.MostrarMensajeError("Hubo un error con la base de datos al ejecutar la setencia DML, " +
+                    "por favor comuniquesé con soporte técnico o el administrador");
             }
             return filasAfectadas;
         }
@@ -30,8 +37,8 @@
                 OracleDataAdapter miAdaptador = new OracleDataAdapter(consulta, CadenaConexion);
                 miAdaptador.Fill(ds, "ResultadoDatos");
             } catch (Exception ex) {
-                Utilidad.MostrarMensajeError("Hubo un error con la base de datos al ejecutar la sentencia select, Por favor comuniquese con soporte tecnico o el administrador");
-                Console.WriteLine(ex.Message);
+                Utilidad.MostrarMensajeError("Hubo un error con la base de datos al ejecutar la sentencia select, " +
+                    "Por favor comuniquesé con soporte técnico o el administrador");
             }
             return ds;
         }
