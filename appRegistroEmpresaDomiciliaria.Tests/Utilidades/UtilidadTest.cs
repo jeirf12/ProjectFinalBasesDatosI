@@ -8,7 +8,7 @@
         [InlineData("123", true)]
         [InlineData("123roho", false)]
         public void EsNumerico_AmbosCasos_OK(string numero, bool resultadoEsperado) {
-            var resultado = Utilidad.EsNumerico(numero);
+            var resultado = numero.EsNumerico();
 
             if (resultadoEsperado)
                 Assert.True(resultado);
@@ -22,7 +22,7 @@
         [InlineData(null, false)]
         [InlineData(" ", false)]
         public void EstaLleno_CamposVacios_Ok(string campo, bool resultadoEsperado) {
-            var resultado = Utilidad.Estalleno(campo);
+            var resultado = campo.Estalleno();
 
             if (resultadoEsperado) 
                 Assert.True(resultado);

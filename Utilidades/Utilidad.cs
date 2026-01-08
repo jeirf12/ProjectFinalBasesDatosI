@@ -3,18 +3,18 @@
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
 
-    public class Utilidad {
+    public static class Utilidad {
 
-        public static void MostrarMensajeInformativo(string mensaje) =>
+        public static void MostrarMensajeInformativo(this string mensaje) =>
             MessageBox.Show(mensaje, "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        public static void MostrarMensajeError(string mensaje) =>
+        public static void MostrarMensajeError(this string mensaje) =>
             MessageBox.Show(mensaje, "mensaje", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-        public static bool EsNumerico(string dato) =>
+        public static bool EsNumerico(this string dato) =>
             Regex.IsMatch(dato, @"^[+-]?\d*(\.\d+)?$");
 
-        public static bool Estalleno(string dato) => 
+        public static bool Estalleno(this string dato) =>
             !string.IsNullOrWhiteSpace(dato) && !string.IsNullOrEmpty(dato);
     }
 }

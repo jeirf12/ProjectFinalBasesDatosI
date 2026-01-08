@@ -20,15 +20,15 @@
             double idDom;
             string nitEmp, fecIniTrab, fecFinTrab, id = string.Empty;
             if (
-                !Utilidad.Estalleno(txtNitEmpDom.Text)
-                || !Utilidad.Estalleno(txtIdDomEmp.Text)
+                !txtNitEmpDom.Text.Estalleno()
+                || !txtIdDomEmp.Text.Estalleno()
                 ) {
-                Utilidad.MostrarMensajeError("Ninguno de los campos puede quedar vacío");
+                ("Ninguno de los campos puede quedar vacío").MostrarMensajeError();
                 return;
             }
 
-            if (!Utilidad.EsNumerico(txtIdDomEmp.Text)) {
-                Utilidad.MostrarMensajeError("Dígite una id numerica válida");
+            if (!txtIdDomEmp.Text.EsNumerico()) {
+                ("Dígite una id numerica válida").MostrarMensajeError();
                 return;
             }
 
@@ -36,10 +36,10 @@
             nitEmp = txtNitEmpDom.Text;
 
             if (
-                Valida.ExisteEmpresa(nitEmp) != 1
-                || Valida.ExisteDomiciliario(idDom) != 1
+                nitEmp.ExisteEmpresa() != 1
+                || idDom.ExisteDomiciliario() != 1
                 ) {
-                Utilidad.MostrarMensajeError("Información no registrada porque no existe nit empresa o id domiciliario");
+                ("Información no registrada porque no existe nit empresa o id domiciliario").MostrarMensajeError();
                 return;
             }
 
@@ -47,14 +47,14 @@
             fecIniTrab = $"{ dtpFecIniDom.Value.Date.Day }/{ dtpFecIniDom.Value.Date.Month }/{ dtpFecFinDom.Value.Date.Year }";
             fecFinTrab = $"{ dtpFecFinDom.Value.Date.Day }/{ dtpFecFinDom.Value.Date.Month }/{ dtpFecFinDom.Value.Date.Year }";
 
-            if (Valida.ExisteContrato(nitEmp, id, fecIniTrab, fecFinTrab) != 0) {
-                Utilidad.MostrarMensajeError("Información no registrada porque ya existe la vinculación");
+            if (nitEmp.ExisteContrato(id, fecIniTrab, fecFinTrab) != 0) {
+                ("Información no registrada porque ya existe la vinculación").MostrarMensajeError();
                 return;
             }
 
             resultadoTrab = this.Trabajo.IngresarTrabajo(nitEmp, idDom, fecIniTrab, fecFinTrab);
             if (resultadoTrab > 0) {
-                Utilidad.MostrarMensajeInformativo("Información Vinculación registrada");
+                ("Información Vinculación registrada").MostrarMensajeInformativo();
                 txtIdDomEmp.Text = string.Empty;
                 txtNitEmpDom.Text = string.Empty;
                 dtpFecIniDom.ResetText();

@@ -20,8 +20,8 @@
             
             if (ds.Tables[0].Rows.Count == 0)
             {
-                Utilidad.MostrarMensajeInformativo("No se ha encontrado información sobre el trabajo de los domiciliarios, " +
-                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador");
+                ("No se ha encontrado información sobre el trabajo de los domiciliarios, " +
+                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador").MostrarMensajeInformativo();
                 return;
             }
 
@@ -35,8 +35,8 @@
 
             if (ds.Tables[0].Rows.Count == 0)
             {
-                Utilidad.MostrarMensajeInformativo("No se ha encontrado información de los domiciliarios con esa fecha, " +
-                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador");
+                ("No se ha encontrado información de los domiciliarios con esa fecha, " +
+                    "si cree que es un error; por favor comuniquesé con soporte técnico o el administrador").MostrarMensajeInformativo();
                 return;
             }
 

@@ -25,8 +25,8 @@
                 filasAfectadas = miComando.ExecuteNonQuery();
                 miConexion.Close();
             } catch (Exception ex) {
-                Utilidad.MostrarMensajeError("Hubo un error con la base de datos al ejecutar la setencia DML, " +
-                    "por favor comuniquesé con soporte técnico o el administrador");
+                ("Hubo un error con la base de datos al ejecutar la setencia DML, " +
+                    "por favor comuniquesé con soporte técnico o el administrador").MostrarMensajeError();
             }
             return filasAfectadas;
         }
@@ -37,8 +37,8 @@
                 OracleDataAdapter miAdaptador = new OracleDataAdapter(consulta, CadenaConexion);
                 miAdaptador.Fill(ds, "ResultadoDatos");
             } catch (Exception ex) {
-                Utilidad.MostrarMensajeError("Hubo un error con la base de datos al ejecutar la sentencia select, " +
-                    "Por favor comuniquesé con soporte técnico o el administrador");
+                ("Hubo un error con la base de datos al ejecutar la sentencia select, " +
+                    "Por favor comuniquesé con soporte técnico o el administrador").MostrarMensajeError();
             }
             return ds;
         }
