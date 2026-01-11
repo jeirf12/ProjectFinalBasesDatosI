@@ -13,7 +13,7 @@
 
         private static readonly string Contrasenia = "oracle";
 
-        private static string CadenaConexion = $"Data Source = { FuenteInformacion }; User ID = { Usuario }; Password = { Contrasenia }";
+        private static readonly string CadenaConexion = $"Data Source = { FuenteInformacion }; User ID = { Usuario }; Password = { Contrasenia }";
 
         public static int EjecutarDML(string consulta) {
             int filasAfectadas = 0;
