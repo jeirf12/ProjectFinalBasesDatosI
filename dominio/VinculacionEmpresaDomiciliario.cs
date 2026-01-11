@@ -44,7 +44,7 @@
             }
 
             id += idDom;
-            fecIniTrab = $"{ dtpFecIniDom.Value.Date.Day }/{ dtpFecIniDom.Value.Date.Month }/{ dtpFecFinDom.Value.Date.Year }";
+            fecIniTrab = $"{ dtpFecIniDom.Value.Date.Day }/{ dtpFecIniDom.Value.Date.Month }/{ dtpFecIniDom.Value.Date.Year }";
             fecFinTrab = $"{ dtpFecFinDom.Value.Date.Day }/{ dtpFecFinDom.Value.Date.Month }/{ dtpFecFinDom.Value.Date.Year }";
 
             if (nitEmp.ExisteContrato(id, fecIniTrab, fecFinTrab) != 0) {

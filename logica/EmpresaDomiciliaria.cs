@@ -7,8 +7,8 @@
 
         public int IngresarEmpresa(string nit,string nombre,string fecha,string nitCam) {
             int resultado;
-            string consulta = "insert into Empresa_Domiciliaria (emp_nit, cam_nit, emp_nombre, emp_fechaoperar) " +
-                $"values ('{ nit }','{ nitCam }','{ nombre }','{ fecha }')";
+            string consulta = "insert into empresa_domiciliaria (emp_nit, cam_nit, emp_nombre, emp_fechaoperar) " +
+                $"values ('{ nit }','{ nitCam }','{ nombre }', to_date('{ fecha }', 'dd/mm/yyyy'))";
             resultado = Datos.EjecutarDML(consulta);
             return resultado;
         }
@@ -16,7 +16,7 @@
         public int ActualizarEmpresa(string nit, string nitCam, string nombre, string fechaOpe) {
             int resultado;
             string consulta = $"update empresa_domiciliaria set cam_nit = '{ nitCam }', emp_nombre = '{ nombre }', " +
-                $"emp_fechaoperar = '{ fechaOpe }' where emp_nit = '{ nit }'";
+                $"emp_fechaoperar = to_date('{ fechaOpe }', 'dd/mm/yyyy') where emp_nit = '{ nit }'";
             resultado = Datos.EjecutarDML(consulta);
             return resultado;
         }

@@ -25,8 +25,8 @@
 
         public int DomiciliariosInactivos() {
             int resultado = 0;
-            string consulta = "select count(t.dom_id) from trabaja t inner join domiciliario d on t.dom_id=d.dom_id " +
-                "where dom_estado = 'inactivo' or trab_fecha_fin >= sysdate";
+            string consulta = "select count(t.dom_id) from trabaja t inner join domiciliario d on t.dom_id = d.dom_id " +
+                "where dom_estado = 'inactivo' or trab_fecha_fin <= sysdate";
             DataSet ds = Datos.EjecutarSelect(consulta);
             if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 resultado = int.Parse("" + ds.Tables[0].Rows[0].ItemArray[0]);
